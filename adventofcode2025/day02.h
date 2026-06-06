@@ -13,8 +13,6 @@ inline long Solver::Solve_Day02_part1() {
         std::string::size_type pos = pattern.find('-');
         std::pair<long, long> range  = std::make_pair(std::stol(pattern.substr(0, pos)), std::stol(pattern.substr(pos + 1, pattern.length())));
 
-        std::cout << range.first << " " << range.second << std::endl; //debug
-
         long* p = &range.first;
         std::string s;
         while (*p <= range.second) {
@@ -98,7 +96,6 @@ inline long Solver::Solve_Day02_part2() {
             }
 
             if (!valid) {
-                std::cout << "Invalid: "<< st << std::endl;
                 count += std::stol(st);
             }
             *p += 1;
