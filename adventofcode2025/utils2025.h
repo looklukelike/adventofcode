@@ -1,7 +1,3 @@
-//
-// Created by Luca Somigli on 05/06/2026.
-//
-
 #ifndef ADVENTOFCODE_UTILS2025_H
 #define ADVENTOFCODE_UTILS2025_H
 
@@ -37,6 +33,9 @@ class Solver {
 
     int Solve_Day01_part1();
     int Solve_Day01_part2();
+
+    long Solve_Day02_part1();
+    long Solve_Day02_part2();
 };
 
 namespace utils {

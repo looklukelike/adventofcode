@@ -1,7 +1,3 @@
-//
-// Created by Luca Somigli on 05/06/2026.
-//
-
 #ifndef ADVENTOFCODE_DAY01_H
 #define ADVENTOFCODE_DAY01_H
 
