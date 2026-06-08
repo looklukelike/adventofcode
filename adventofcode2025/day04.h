@@ -25,7 +25,7 @@ struct Matrix {
 
     void print() {
         for (size_t y = 0; y < dimY; y++) {
-            for (size_t x = 0; x < dimY; x++) {
+            for (size_t x = 0; x < dimX; x++) {
                 std::cout << m[dimY * y + x];
             }
             std::cout << std::endl;
@@ -37,7 +37,6 @@ struct Matrix {
 
 inline int Solver::Solve_Day04_part1() {
     std::string line;
-    int sum = 0;
     int width = 0, height = 0;
 
     while (std::getline(file, line)) {
@@ -52,9 +51,9 @@ inline int Solver::Solve_Day04_part1() {
     file.clear();
     file.seekg(0);
 
-    Matrix m = Matrix(height, width);
+    Matrix m = Matrix(width, height);
 
-    int x, y = 0;
+    int x = 0, y = 0;
     while (std::getline(file, line)) {
         for (x = 0; x < line.length(); ++x) {
             m(x, y) = line[x];
@@ -94,7 +93,6 @@ inline int Solver::Solve_Day04_part1() {
 
 inline int Solver::Solve_Day04_part2() {
     std::string line;
-    int sum = 0;
     int width = 0, height = 0;
 
     while (std::getline(file, line)) {
@@ -109,9 +107,9 @@ inline int Solver::Solve_Day04_part2() {
     file.clear();
     file.seekg(0);
 
-    Matrix m = Matrix(height, width);
+    Matrix m = Matrix(width, height);
 
-    int x, y = 0;
+    int x = 0, y = 0;
     while (std::getline(file, line)) {
         for (x = 0; x < line.length(); ++x) {
             m(x, y) = line[x];
@@ -122,11 +120,12 @@ inline int Solver::Solve_Day04_part2() {
     m.print();
 
     int totalRolls = 0;
+    std::vector<std::pair<int, int>> directions = {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
+    std::vector<std::pair<int,int>> toRemove;
     while (true) {
         int count = 0;
         int rolls = 0;
         int _x, _y;
-        std::vector<std::pair<int, int>> directions = {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
 
         for (y = 0; y < height; ++y) {
             for (x = 0; x < width; ++x) {
@@ -143,12 +142,17 @@ inline int Solver::Solve_Day04_part2() {
                     }
 
                     if (rolls < 4) {
-                        m(x, y) = '.';
+                        toRemove.push_back({x, y});
                         count++;
                     }
                 }
             }
         }
+
+        for (auto& p : toRemove) {
+            m(p.first, p.second) = '.';
+        }
+
 
         if (count == 0) {
             break;
