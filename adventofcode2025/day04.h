@@ -16,10 +16,8 @@ struct Matrix {
     }
 
     char& operator()(unsigned int x, unsigned int y) {
-        // char dummy = '.';
         if (x >= dimX || y>= dimY)
             throw std::out_of_range("matrix indices out of range");
-                // return dummy;
         return m[dimY * y + x];
     }
 
