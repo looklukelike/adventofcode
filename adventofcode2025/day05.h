@@ -34,11 +34,6 @@ inline int Solver::Solve_Day05_part1() {
 }
 
 
-bool isEqual(const std::pair<int, int>& element1, std::pair<int, int>& element2)
-{
-    return element1.first ==  element2.first & element1.second ==  element2.second;
-}
-
 inline long Solver::Solve_Day05_part2() {
     std::string line;
 
