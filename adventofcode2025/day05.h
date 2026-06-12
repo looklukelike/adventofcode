@@ -47,7 +47,7 @@ inline long Solver::Solve_Day05_part2() {
 
         size_t count = 0;
         for (auto range : ranges) {
-            if (min >= range.first && min <= range.second || max >= range.first && max <= range.second || min <= range.first && max >= range.second) {
+            if (min <= range.second && max >= range.first) {
                 overlapping.insert(count); // store overlapping ranges separately
             }
             count++;
