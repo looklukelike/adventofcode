@@ -55,7 +55,7 @@ inline std::string removeSpaces(std::string input)
 
 inline long Solver::Solve_Day06_part2() {
     std::string line;
-    std::unordered_map<size_t, std::string> map;
+    std::map<size_t, std::string> map;
     std::vector<char> operators;
 
     while (std::getline(file, line)) {
@@ -75,8 +75,8 @@ inline long Solver::Solve_Day06_part2() {
     for (auto & it : map) {
         it.second = removeSpaces(it.second);
         if (it.second.empty()) {
-            char operation = operators.back();
-            operators.pop_back();
+            char operation = operators.front();
+            operators.erase(operators.begin());
 
             long total = 0;
             if (operation == '+') {
